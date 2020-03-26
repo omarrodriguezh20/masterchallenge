@@ -10,10 +10,11 @@ import static org.junit.Assert.*;
 public class RoadMapRepositoryTest {
 
     @Test
-    public void loadRoadMap() {
+    public void testLoadRoadMap() {
         RoadMapRepository roadMapRepository = new RoadMapRepositoryImpl();
         try{
-            Map<String, String> roadMap = roadMapRepository.loadRoadMap();
+            roadMapRepository.loadRoadMap();
+            Map<String, String> roadMap = roadMapRepository.getRoadMap();
             assertTrue(roadMap.keySet().size() > 0);
         }catch(Exception exception){
             fail();
@@ -21,8 +22,14 @@ public class RoadMapRepositoryTest {
     }
 
     @Test
-    public void failedToLoadFile(){
+    public void testFailedToLoadFile(){
         RoadMapRepository roadMapRepository = new RoadMapRepositoryImpl("no-file");
         assertThrows(FileNotFoundException.class, roadMapRepository::loadRoadMap);
+    }
+
+    @Test
+    public void testMalformedFile(){
+        RoadMapRepository roadMapRepository = new RoadMapRepositoryImpl("malformedFile.txt");
+        assertThrows(IllegalStateException.class, roadMapRepository::loadRoadMap);
     }
 }
