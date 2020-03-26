@@ -5,7 +5,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FileLoader {
+
     private String fileName = "city.txt";
+
+    public FileLoader(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public FileLoader() {
+    }
+
     public Map<String, String> load() throws FileNotFoundException {
         Map<String, String> roadMap = new HashMap<>();
         ClassLoader classLoader = RoadMapSingleton.class.getClassLoader();
