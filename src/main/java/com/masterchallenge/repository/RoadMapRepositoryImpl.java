@@ -16,39 +16,13 @@ import java.util.Map;
 @Repository
 public class RoadMapRepositoryImpl implements RoadMapRepository {
 
-    @Value("${com.masterchallenge.filename}")
-    private String fileName;
-
-    private Map<String, String> roadMap = new HashMap<>();
+    private Map<String, String> roadMap = RoadMapSingleton.getInstance();
     private String currentCity = "";
     private String destination = "";
 
     public RoadMapRepositoryImpl() {
     }
 
-    public RoadMapRepositoryImpl(String fileName) {
-        this.fileName = fileName;
-    }
-
-    public void loadRoadMap() throws IOException {
-        ClassLoader classLoader = getClass().getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream(fileName);
-
-        if (inputStream == null) {
-            throw new FileNotFoundException(String.format("File not found %s", fileName));
-        }
-
-        try (InputStreamReader inputBuffer = new InputStreamReader(inputStream);
-             BufferedReader bufferedReader = new BufferedReader(inputBuffer)) {
-            bufferedReader.lines().forEach(line -> {
-                String[] values = line.split(",");
-                if (values.length != 2) {
-                    throw new IllegalStateException(String.format("Malformed cities configuration file %s", fileName));
-                }
-                roadMap.put(values[0].trim(), values[1].trim());
-            });
-        }
-    }
 
     public Map<String, String> getRoadMap() {
         return this.roadMap;
