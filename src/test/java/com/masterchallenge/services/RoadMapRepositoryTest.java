@@ -13,7 +13,7 @@ public class RoadMapRepositoryTest {
 
     @Test
     public void testLoadRoadMap() {
-        RoadMapRepository roadMapRepository = new RoadMapRepositoryImpl();
+        RoadMapRepository roadMapRepository = new RoadMapRepositoryImpl("city.txt");
         try{
             roadMapRepository.loadRoadMap();
             Map<String, String> roadMap = roadMapRepository.getRoadMap();
