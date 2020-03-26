@@ -21,6 +21,7 @@ Stack
 spring-boot
 swagger
 junit 4
+jacoco
 
 Run
 ---
@@ -30,6 +31,18 @@ Run
 - Clone the repository
 ```
 git clone http://github.com/repo
+```
+- Run the test battery
+```
+mvn test
+```
+- After executing the test battery you can generate the coverage report
+```
+mvn jacoco:report
+```
+- And you see the report opening the file
+```
+target/site/jacoco/index.html
 ```
 - Execute the service
 ```
