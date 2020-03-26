@@ -1,4 +1,4 @@
-package com.masterchallenge.services;
+package com.masterchallenge.repository;
 
 import java.util.Map;
 

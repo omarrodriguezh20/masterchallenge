@@ -1,4 +1,4 @@
-package com.masterchallenge.services;
+package com.masterchallenge.repository;
 
 import org.springframework.stereotype.Repository;
 
