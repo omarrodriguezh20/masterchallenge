@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 
@@ -17,17 +19,17 @@ public class RoadMapServiceTest {
     RoadMapService roadMapService = new RoadMapServiceImpl();
 
     @Test
-    public void testCitiesConnected() {
+    public void testCitiesConnected() throws IOException {
         assertTrue(roadMapService.areCitiesConnected("Boston", "New York"));
     }
 
     @Test
-    public void testCitiesDisconnected() {
+    public void testCitiesDisconnected() throws IOException {
         assertFalse(roadMapService.areCitiesConnected("Boston", "Nowhere"));
     }
 
     @Test
-    public void testLongestPath() {
+    public void testLongestPath() throws IOException {
         assertTrue(roadMapService.areCitiesConnected("Philadelphia", "New York"));
     }
 
