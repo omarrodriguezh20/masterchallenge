@@ -13,24 +13,26 @@ Assumptions
 
 - There's only one road going out from one city to another.
 - There is no endpoint for update cities and roads
-- The file will be stored on the classpath
+- The file will be stored on the classpath and provided with the solution
+- The file is small enough to be stored on memory
+- Both responses (no connection and connection ) will return and 200 Http Status, because the search has been done
 
 Stack
 -----
 
-spring-boot
-swagger
-junit 4
-jacoco
+- spring-boot
+- swagger
+- junit 4
+- jacoco (unit test coverage)
 
 Run
 ---
 
-- Install java 8   [] 
+- Install java 8   
 - Install maven    [https://maven.apache.org/]
 - Clone the repository
 ```
-git clone http://github.com/repo
+git clone https://github.com/omarrodriguezh20/masterchallenge.git
 ```
 - Run the test battery
 ```
@@ -40,7 +42,7 @@ mvn test
 ```
 mvn jacoco:report
 ```
-- And you see the report opening the file
+- The coverage report is located in
 ```
 target/site/jacoco/index.html
 ```
@@ -58,4 +60,7 @@ http://localhost:8080/connected?origin=Boston&destination=Newark
 http://localhost:8080/connected?origin=Boston&destination=Philadelphia
 http://localhost:8080/connected?origin=Philadelphia&destination=Albany
 ```
-
+- Swagger documentation
+```
+http://localhost:8080/swagger-ui.html
+```
