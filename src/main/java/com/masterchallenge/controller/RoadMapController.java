@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class CitiesController {
+public class RoadMapController {
 
     @Autowired
     RoadMapService roadMapService;
@@ -21,7 +21,7 @@ public class CitiesController {
             "connected if there’s a series of roads that can be traveled from one city\n" +
             "to another.")
     @ApiResponses({
-            @ApiResponse(code = 200, message = "Cities route processed.", response = CitiesController.class),
+            @ApiResponse(code = 200, message = "Cities route processed.", response = RoadMapController.class),
             @ApiResponse(code = 500, message = "Internal server error.", response = Exception.class)})
     @GetMapping("/connected")
     public ResponseEntity<String> connected(@RequestParam(required = false) String origin, @RequestParam(required = false) String destination) {
