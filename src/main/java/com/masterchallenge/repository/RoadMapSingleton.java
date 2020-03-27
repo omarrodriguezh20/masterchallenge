@@ -10,12 +10,8 @@ public class RoadMapSingleton {
     private static Map<String, String> INSTANCE;
 
     static{
-        try {
-            FileLoader loader = new FileLoader();
-            INSTANCE = loader.load();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        FileLoader loader = new FileLoader();
+        INSTANCE = loader.load();
     }
 
     public static Map<String, String> getInstance() {
