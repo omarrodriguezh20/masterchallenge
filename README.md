@@ -4,14 +4,12 @@ Connected Cities
 Requirement
 ------------
 
-Determine if two cities are connected. Two cities are considered
-connected if there’s a series of roads that can be traveled from one city
-to another.
+Determine if two cities are connected. Two cities are considered connected if there’s 
+a series of roads that can be traveled from one city to another.
 
 Assumptions
 ----------
 
-- There's only one road going out from one city to another.
 - There is no endpoint for update cities and roads
 - The file will be stored on the classpath and provided with the solution
 - The file is small enough to be stored on memory
@@ -64,3 +62,19 @@ http://localhost:8080/connected?origin=Philadelphia&destination=Albany
 ```
 http://localhost:8080/swagger-ui.html
 ```
+
+Parametrization
+---------------
+If you want to change the list of cities and values, you can modify the file
+
+```
+/src/main/resources/city.txt
+```
+
+The current file has this contents
+```
+Boston, New York
+Philadelphia, Newark
+Newark, Boston
+Trenton, Albany
+``` 
