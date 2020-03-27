@@ -73,20 +73,4 @@ public class RoadMapControllerTest {
         }
     }
 
-    @Test
-    public void givenError_thenGetStatus500(){
-        String origin = "Philadelphia";
-        String destination = "New York";
-        try {
-            BDDMockito.given(roadMapService.areCitiesConnected(origin, destination)).willThrow( new Exception());
-            mvc.perform(get("/connected")
-                    .queryParam("origin", origin)
-                    .queryParam("destination", destination)
-            ).andExpect(status().is5xxServerError());
-        } catch (Exception ignored) {
-
-        }
-    }
-
-
 }

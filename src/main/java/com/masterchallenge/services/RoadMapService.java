@@ -13,5 +13,5 @@ public interface RoadMapService {
      * @param destination the city to where you want to travel
      * @return true if the two cities are connected, otherwise it returns false
      */
-    Boolean areCitiesConnected(String origin, String destination) throws IOException;
+    Boolean areCitiesConnected(String origin, String destination);
 }

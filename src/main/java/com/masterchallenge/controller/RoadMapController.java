@@ -29,13 +29,11 @@ public class RoadMapController {
             return new ResponseEntity<>("no", HttpStatus.OK);
         }
 
-        try {
+
             return new ResponseEntity<>(
                     roadMapService.areCitiesConnected(origin, destination) ? "yes" : "no",
                     HttpStatus.OK);
-        } catch (Exception exception){
-            return new ResponseEntity<>(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+
     }
 
 }
