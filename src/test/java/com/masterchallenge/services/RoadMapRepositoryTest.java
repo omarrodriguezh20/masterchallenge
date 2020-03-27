@@ -4,10 +4,10 @@ import com.masterchallenge.repository.RoadMapRepository;
 import com.masterchallenge.repository.RoadMapRepositoryImpl;
 import org.junit.Test;
 
-import java.io.FileNotFoundException;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class RoadMapRepositoryTest {
 
