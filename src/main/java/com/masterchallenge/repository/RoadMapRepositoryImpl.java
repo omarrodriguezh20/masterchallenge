@@ -2,46 +2,50 @@ package com.masterchallenge.repository;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
 
 
-/*
-  Simple HashMap based implementation of the road map repository, it is based on the premise
-  that we only have one existing node from one city to another. With this premise
-  the value from a given key acts as a key for the next hop
+/**
+ * Graph based implementation, any two nodes are connected in both ways (in and out)
  */
 @Repository
 public class RoadMapRepositoryImpl implements RoadMapRepository {
 
-    private Map<String, String> roadMap = RoadMapSingleton.getInstance();
-    private String currentCity = "";
-    private String destination = "";
+    private RoadmapGraph<String> roadmapGraph = RoadMapSingleton.getInstance();
 
     public RoadMapRepositoryImpl() {
     }
 
 
-    public Map<String, String> getRoadMap() {
-        return this.roadMap;
+    public RoadmapGraph<String> getRoadMap() {
+        return this.roadmapGraph;
     }
 
-    public void setOrigin(String currentCity) {
-        this.currentCity = currentCity;
-    }
+    @Override
+    /*
+      Find the connection between the cities with DFS (Deept First Search)
+      https://en.wikipedia.org/wiki/Depth-first_sear
+     */
+    public boolean areCitiesConnected(String origin, String destination) {
+        List<String> todo = new LinkedList<>();
+        List<String> done = new LinkedList<>();
 
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
+        todo.add(origin);
 
-    public Boolean hasCurrentCity() {
-        return roadMap.containsKey(currentCity);
-    }
-
-    public Boolean haveReachDestination() {
-        return roadMap.get(currentCity).equals(destination);
-    }
-
-    public void travel() {
-        currentCity = roadMap.get(currentCity);
+        while (todo.size() > 0) {
+            String vertex = todo.get(0);
+            todo.remove(0);
+            done.add(vertex);
+            for (String dest : roadmapGraph.getReachableNodes(vertex)) {
+                if (destination.equals(dest)) {
+                    return true;
+                }
+                if (!done.contains(dest)) {
+                    todo.add(dest);
+                }
+            }
+        }
+        return false;
     }
 }

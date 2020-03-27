@@ -1,16 +1,14 @@
 package com.masterchallenge.repository;
 
-import java.util.Map;
-
 public class RoadMapSingleton {
-    private static Map<String, String> INSTANCE;
+    private static RoadmapGraph<String> INSTANCE;
 
     static{
         FileLoader loader = new FileLoader();
         INSTANCE = loader.load();
     }
 
-    public static Map<String, String> getInstance() {
+    public static RoadmapGraph<String> getInstance() {
         return INSTANCE;
     }
 }
