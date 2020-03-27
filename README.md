@@ -15,6 +15,15 @@ Assumptions
 - The file is small enough to be stored on memory
 - Both responses (no connection and connection ) will return and 200 Http Status, because the search has been done
 
+Design
+-----
+Since the cities could be visited in both directions we are dealing with a graph. The implementation
+is based on and Adjacent list [https://en.wikipedia.org/wiki/Adjacency_list] and for the search 
+we are using a depth first search [https://en.wikipedia.org/wiki/Depth-first_search].
+
+For the storage of the Graph in memory we use a Singleton, granted that the file size isn't going to be
+of considerable size, and to improve the performance (the file will be readed only once)
+
 Stack
 -----
 
